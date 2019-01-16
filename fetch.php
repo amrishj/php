@@ -18,17 +18,18 @@
   <h1 class="text-center" > Display  Data in a Table </h1>
   <br>
   <a href="insert.php"><button class="btn btn-primary">Add data</button></a>
-  <table  id="tabledata" class=" table table-striped table-hover table-bordered">
+  <table   class=" table table-striped table-hover table-bordered">
    
-   <tr class="bg-success text-white text-center">
+   <tr class="bg-danger text-white text-center">
     
-    <th> Id </th>
+    <th> Sr No. </th>
     <th> FirstName </th>
     <th> LastName </th>
     <th> Email </th>
     <th> Gender </th>
     <th> Mobile </th>
     <th> Image </th>
+    <th>Date </th>
     <th> Delete </th>
     <th> Update </th>
 
@@ -36,14 +37,17 @@
 
   <?php
 
-    include 'conn.php'; 
+    include ('conn.php'); 
    $q = "select * from crudtable ";
 
     $query = mysqli_query($con,$q);
     $num=1;
-    while($res = mysqli_fetch_array($query)){
+    ?>
+    <?php
+    while($res = mysqli_fetch_array($query))
+    {?>
     
- ?>
+ 
    <tr class="text-center">
     <td> <?php echo $num++;  ?> </td>
     <td> <?php echo $res['firstname'];  ?> </td>
@@ -52,7 +56,7 @@
     <td> <?php echo $res['gender'];  ?> </td>
     <td> <?php echo $res['mobile'];  ?> </td>
     <td> <img src="upload/<?php echo $res['image']; ?>" style="height:50px; width:50px;"/> </td>
-   
+   <td> <?php echo $res['dat'];  ?> </td>
     <td> <button class="btn-danger btn"> <a href="delete.php?id=<?php echo $res['id']; ?>" class="text-white"> Delete </a>  </button> </td>
     <td> <button class="btn-primary btn"> <a href="update.php?id=<?php echo $res['id']; ?>" class="text-white"> Update </a> </button> </td>
 
@@ -60,7 +64,7 @@
 
    <?php 
    
-   }
+  }
 
    ?>
    

@@ -5,21 +5,21 @@ include 'conn.php';
 extract($_POST);
 if(isset($_POST['done']))
 {
-  
+  $image_size=$_FILES['image']['size'];
   $image=$_FILES['image']['name'];
   $image_type=$_FILES['image']['type'];
   
-if($image_type=='image/png')
+if($image_type=='image/png' && $image_size>1024)
   {
     $q = " INSERT INTO crudtable(firstname, lastname, email, gender, mobile, image, dat) VALUES ( '$firstname','$lastname','$email','$gender','$mobile','$image',NOW() )";
 
   $query = mysqli_query($con,$q);
   move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$image);
   echo "<script>alert('Inserted Successfully');</script>";
-  //header("location: fetch.php");
+  header("location: fetch.php");
   }
   else{
-    echo 'Image type is not correct';
+    echo 'Image type is not correct and image should be less than 1kb';
   }
 }
 
