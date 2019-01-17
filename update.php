@@ -21,7 +21,7 @@
   $q = " update crudtable set id=$id, firstname='$firstname', lastname='$lastname', email='$email',gender='$gender', mobile='$mobile', image='$image' where id=$id  ";
 
    $query = mysqli_query($con,$q);
-     move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$image);
+   move_uploaded_file($_FILES['image']['tmp_name'],"upload/".$image);
    header('location:fetch.php');
  }
  else{
@@ -63,7 +63,7 @@
     <label> Email: </label>
     <input type="email" name="email" class="form-control" value="<?= $res['email'];?>"> <br>
     <label> Gender: </label>
-     <input type="radio" value="Male"  name="gender" checked="<?php 
+     <input type="radio"  name="gender" checked="<?php 
         if($res["gender"]=='Male' || $res["gender"]=='Female')
         {
            echo "checked";
