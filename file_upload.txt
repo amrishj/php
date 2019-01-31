@@ -1,0 +1,18 @@
+**** file uploading :- 
+ method="post"
+ enctype="multipart/form-data"
+
+  $_FILES[] :- 
+
+ 1. tmp name of file :- $_FILES['fieldname']['tmp_name']
+  2. name of the file :- $_FILES['fieldname']['name']
+ 3. size of file :- $_FILES['fieldname']['size']
+  4. type of file :- $_FILES['fieldname']['type']
+5. error in file :- $_FILES['fieldname']['error']
+   
+   move_uploaded_file() :- to upload a file in a server
+   syntax:
+   move_uploaded_file(tmp_name of file , new location in server);
+   eg:
+   
+   move_uploaded_file($_FILES['fieldname']['tmp_name'],"upload/".$_FILES['fieldname']['name']);  
