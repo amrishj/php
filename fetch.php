@@ -1,3 +1,13 @@
+<?php
+include("conn.php");
+session_start();
+$sid=$_SESSION['sid'];
+//for blank session
+if($sid=="")
+    {
+  header("location:index.php");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +28,8 @@
   <h1 class="text-center" > Display  Data in a Table </h1>
   <br>
   <a href="insert.php"><button class="btn btn-primary">Add data</button></a>
+  <a href="logout.php"><button class="btn btn-warning float-right">Logout</button></a>
+  <button class="btn btn-primary float-right">Welcome: <?php echo $sid;?></button>
   <table   class=" table table-striped table-hover table-bordered">
    
    <tr class="bg-danger text-white text-center">
